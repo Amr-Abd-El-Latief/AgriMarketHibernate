@@ -51,7 +51,7 @@ public class Temp extends HttpServlet {
         user.setEmail("israakilany@gmail.com");
         user.setUserName("IsraaKilany");
         user.setCreditNumber("98649794869486696486984698");
-        user.setBOD(LocalDate.now());
+        user.setDOB(LocalDate.now());
         user.setAddress("addreesrr;dp;gk,");
         user.setJob("Farmer");
         user.setInterests(new ArrayList<>());
