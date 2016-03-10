@@ -49,14 +49,14 @@
                     <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-6">
 
                         <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom ">
-                            <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg">
-                            <h3 class="mbr-figure__caption">Awad Hussien</h3>
+                            <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg"style="width: 59%;">
+                            <h3 class="mbr-figure__caption" style="width: 59%;">Awad Hussien</h3>
                         </figure>
                         <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-buttons mbr-buttons--center">
+                            <div class="mbr-buttons mbr-buttons--center" style="width: 59%;">
                                 <script>
                                     function edit_profile() {
-                                        location.href = 'edit_profile.jsp';
+                                        location.href = 'Temp';
                                     }
                                 </script>
                                 <button  onclick='edit_profile()' class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
