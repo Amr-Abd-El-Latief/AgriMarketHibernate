@@ -6,7 +6,6 @@
 package temp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.ServletConfig;
@@ -47,20 +46,26 @@ public class Temp extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         config.getServletContext().setAttribute("interests", request);
-//        User user = new User();
-//        user.setEmail("israakilany@gmail.com");
-//        user.setUserName("IsraaKilany");
-//        user.setCreditNumber("98649794869486696486984698");
-//        user.setDOB(LocalDate.now());
-//        user.setAddress("addreesrr;dp;gk,");
-//        user.setJob("Farmer");
-//        ArrayList<String> interests=new ArrayList<>();
-//        interests.add("Tomatoes");
-//        interests.add("Rice");
-//        user.setInterests(interests);
-//
-//        HttpSession session = request.getSession(true);
-//        session.setAttribute("user", user);
+        User user = null;
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user") == null) {
+            
+            user = new User();
+            user.setEmail("israa@yahoo.com");
+            user.setUserName("IsraaKilany");
+            user.setCreditNumber("1234567891234567");
+            user.setDOB(LocalDate.now());
+            user.setAddress("addreesrr;dp;gk,");
+            user.setJob("Farmer");
+            ArrayList<String> interests = new ArrayList<>();
+            interests.add("Tomatoes");
+            interests.add("Rice");
+            user.setInterests(interests);
+
+            session = request.getSession(true);
+            session.setAttribute("user", user);
+
+        }
 
         response.sendRedirect("edit_profile.jsp");
     }

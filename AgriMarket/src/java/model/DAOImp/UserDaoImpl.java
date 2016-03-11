@@ -10,8 +10,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +70,43 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
+        Connection connection;
+
+        try {
+            connection = JdbcConnection.getConnection();
+            PreparedStatement pst = connection.prepareStatement("update user set email=? , user_name=? , password=? , job=? , address=? , image=? , DOB=? , credit_number=?  where email =?");
+            pst.setString(1, user.getEmail());
+            pst.setString(2, user.getUserName());
+            pst.setString(3, user.getPassword());
+            pst.setString(4, user.getJob());
+            pst.setString(5, user.getAddress());
+            pst.setBytes(6, user.getImage());
+            pst.setDate(7, Date.valueOf(user.getDOB()));
+            pst.setString(8, user.getCreditNumber());
+            pst.setString(9, user.getEmail());
+            pst.executeUpdate();
+
+            pst = connection.prepareStatement("delete from interests where email =?");
+            pst.setString(1, user.getEmail());
+            pst.executeUpdate();
+
+            ArrayList<String> lst = user.getInterests();
+            for (int i = 0; i < lst.size(); i++) {
+                String get = lst.get(i);
+
+                pst = connection.prepareStatement("insert into  interests (email,name) values (?,?)");
+                pst.setString(1, user.getEmail());
+                pst.setString(2, get);
+                pst.executeUpdate();
+
+            }
+
+//            connection.close();
+            pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

@@ -40,28 +40,28 @@
                 $("#editForm").submit();
             }
 
-
-            function validCard() {
-                var cardStr = document.editForm.credit.value;
-                cardStr = cardStr.replace(/\s+/g, '');
-                if (isNaN(cardStr))
-                    return false;
-                if (cardStr.length < 16)
-                    return false;
-
-                // otherwise return true 
-                return true;
-            }
-
-            function trySubmit() {
-
-                if (!validCard())
-                    document.editForm.credit.setCustomValidity("Please enter a valid card number");
-                else {
-                    document.editForm.credit.setCustomValidity("");
-                    return true;
-                }
-            }
+//
+//            function validCard() {
+//                var cardStr = document.editForm.credit.value;
+//                cardStr = cardStr.replace(/\s+/g, '');
+//                if (isNaN(cardStr))
+//                    return false;
+//                if (cardStr.length < 16)
+//                    return false;
+//
+//                // otherwise return true 
+//                return true;
+//            }
+//
+//            function trySubmit() {
+//
+//                if (!validCard())
+//                    document.editForm.credit.setCustomValidity("Please enter a valid card number");
+//                else {
+//                    document.editForm.credit.setCustomValidity("");
+//                    return true;
+//                }
+//            }
 
         </script>
     </head>
@@ -84,7 +84,9 @@
                             <div class="mbr-navbar__column mbr-navbar__menu">
                                 <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                                     <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="index.jsp">HOME</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="about.jsp">ABOUT</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="contact_us.jsp">CONTACT</a></li></ul></div>
-                                    <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><button type="submit" onclick="trySubmit();" class="mbr-buttons__btn btn btn-lg btn-default" >Save</button></div>
+                                    <div class="mbr-navbar__column">
+                                        <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active">
+                                            <li class="mbr-navbar__item"><button type="submit" class="mbr-buttons__btn btn btn-lg btn-default" >Save</button></div>
                                             </li></ul></div>
                                 </nav>
                             </div>
@@ -126,7 +128,7 @@
 
                             <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                    <input type="email" class="form-control" name="mail" required="" value = '${sessionScope.user.email}' placeholder="Email*">
+                                    <input type="email" class="form-control" name="mail" required="" disabled="true" value = '${sessionScope.user.email}' placeholder="Email*">
 
                                 </div>
                             </div>
@@ -157,7 +159,7 @@
 
                             <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                    <input type="text" class="form-control" name="credit" required="" value = '${sessionScope.user.creditNumber}' placeholder="Credit Number*">
+                                    <input type="text" class="form-control" name="credit" required="" disabled="true"  value = '${sessionScope.user.creditNumber}' placeholder="Credit Number*">
 
                                 </div>
                             </div>

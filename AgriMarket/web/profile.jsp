@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
     <head>
         <!-- Site made with Mobirise Website Builder v2.9, https://mobirise.com -->
@@ -14,7 +16,13 @@
         <link rel="stylesheet" href="assets/mobirise/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <c:if test="${empty sessionScope.user}">
 
+            <script>
+                location.href = "sign_in.jsp";
+            </script>
+        </c:if>
 
     </head>
     <body>
@@ -34,7 +42,16 @@
                         <div class="mbr-navbar__column mbr-navbar__menu">
                             <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                                 <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="index.jsp">HOME</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="about.jsp">ABOUT</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="contact_us.jsp">CONTACT</a></li></ul></div>
-                                <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="profile.jsp">Awad Hussein</a></li></ul></div>
+                                <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
+                                            <a class="mbr-buttons__btn btn btn-default" id="topBtn" href="profile.jsp">${sessionScope.user.userName}</a>
+                                            <c:if test="${empty sessionScope.user}">
+
+                                                <script>
+                                                    $("#topBtn").html("Sign In");
+                                                    
+                                                </script>
+                                            </c:if>
+                                        </li></ul></div>
                             </nav>
                         </div>
                     </div>
@@ -46,11 +63,19 @@
 
             <div class="mbr-section__container mbr-section__container--isolated container">
                 <div class="row">
-                    <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-6">
+                    <div class="mbr-box__magnet--sm mbr-box__magnet--top-center mbr-section__left col-sm-4">
 
-                        <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom ">
-                            <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg"style="width: 59%;">
-                            <h3 class="mbr-figure__caption" style="width: 59%;">Awad Hussien</h3>
+                        <figure class="mbr-figure mbr-figure--full-width mbr-figure--caption-inside-bottom ">
+                            <img class="mbr-figure__img" id="image" src="${sessionScope.user.imageUrl}" style="width: 59%;">
+
+                            <c:if test="${empty sessionScope.user.imageUrl}">
+
+                                <script>
+
+                                    $("#image").attr("src", "assets/images/user.png");
+                                </script>
+                            </c:if>
+                            <h3 class="mbr-figure__caption" style="width: 59%;">${sessionScope.user.userName}</h3>
                         </figure>
                         <div class="mbr-section__container mbr-section__container--middle" style="width: 59%;">
                             <div class="mbr-buttons mbr-buttons--center">
@@ -67,38 +92,48 @@
                     <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">Awad Hussien</h3>
+                                <!--<h3 class="mbr-header__text">Awad Hussien</h3>-->
 
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>Farmer</strong></h2>    
+                                <h2><strong>${sessionScope.user.job}</strong></h2>    
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>40 years old</strong></h2>    
+                                <h2><strong>${sessionScope.user.DOB}</strong></h2>    
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>awad@yahoo.com</strong></h2>    
+                                <h2><strong>${sessionScope.user.email}</strong></h2>    
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>01297397483653</strong></h2>    
+                                <h2><strong>${sessionScope.user.creditNumber}</strong></h2>    
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>32 giza sq, Egypt</strong></h2>    
+                                <h2><strong>${sessionScope.user.address}</strong></h2>    
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>Interested in: tomatoes</strong></h2>    
+                                <script>
+                                    var interests = "Interested in : ";
+                                    <c:forEach var = "interest" items = "${sessionScope.user.interests}">
+                                    interests += "${interest}" + ",";
+                                    </c:forEach>
+                                    interests = interests.substring(0, interests.length - 1);
+                                </script>
+                                <h2><strong id="finalInt"></strong></h2>  
+                                <script>
+                                    $("#finalInt").html(interests);
+                                </script>
                             </div>
                         </div>
                     </div>

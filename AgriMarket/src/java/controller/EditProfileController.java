@@ -96,6 +96,7 @@ public class EditProfileController extends HttpServlet {
             userDao.updateUser(user);
 
             session.setAttribute("user", user);
+            
             System.out.println(user.getInterests());
             System.out.println(user.getImage());
         } catch (FileUploadException ex) {
