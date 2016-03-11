@@ -7,13 +7,21 @@
         <servlet-name>signin</servlet-name>
         <servlet-class>controller.SignInController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditProfileController</servlet-name>
+        <servlet-class>controller.EditProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/signin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileController</servlet-name>
+        <url-pattern>/EditProfileController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            2419200
         </session-timeout>
     </session-config>
 </web-app>

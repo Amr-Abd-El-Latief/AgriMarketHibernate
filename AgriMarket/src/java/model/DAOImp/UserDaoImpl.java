@@ -58,7 +58,7 @@ public class UserDaoImpl implements UserDao {
                 user.setImage(res.getBytes("image"));
                 user.setDOB(res.getDate("DOB").toLocalDate());
                 user.setCreditNumber(res.getString("credit_number"));
-                
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,7 +70,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

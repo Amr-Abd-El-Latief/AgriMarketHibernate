@@ -7,12 +7,14 @@ package model.pojo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 /**
  *
  * @author muhammad
  */
 public class User {
+
     private String email;
     private String userName;
     private String password;
@@ -23,6 +25,7 @@ public class User {
     private String creditNumber;
     private ArrayList<String> interests = new ArrayList<>();
     private ArrayList<Order> orders = new ArrayList<>();
+    private String imageUrl;
 
     public User() {
     }
@@ -106,6 +109,14 @@ public class User {
     public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
-    
-    
+
+    public String getImageUrl() {
+        if (image == null || image.length == 0) {
+            return null;
+        }
+        String url = "data:image/png;base64," + Base64.encodeBase64String(image);
+
+        return url;
+    }
+
 }

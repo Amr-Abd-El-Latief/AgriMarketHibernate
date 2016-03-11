@@ -52,7 +52,7 @@
                             <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg"style="width: 59%;">
                             <h3 class="mbr-figure__caption" style="width: 59%;">Awad Hussien</h3>
                         </figure>
-                        <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-section__container mbr-section__container--middle" style="width: 59%;">
                             <div class="mbr-buttons mbr-buttons--center">
                                 <script>
                                     function edit_profile() {
